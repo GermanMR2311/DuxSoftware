@@ -12,7 +12,7 @@ public class TorneoTest {
         Torneo torneo= new Torneo();
         Jugadores jugador1=new Jugadores();
         Jugadores jugador2=new Jugadores();
-        torneo.cargarNombreTorneo(jugador1,jugador2);;
+        torneo.cargarNombreTorneo();;
         Assertions.assertEquals("German",torneo.getNombreTorneo());
     }
     @Test

@@ -11,7 +11,6 @@ public class Jugadores {
 	private Integer puntoTeabreak;
 	private Integer gamesGanados;
 	private boolean saca;
-	private int score;
 	private double probabilidadDeGanar;
 	private List<Integer> puntosSets= new ArrayList<Integer>();
 	private List<Integer> puntosTeabreak= new ArrayList<Integer>();
@@ -30,7 +29,6 @@ public class Jugadores {
 		SetsGanados=0;
 		gamesGanados=0;
 		saca=false;
-		score=0;
 		puntoTeabreak=0;
 	}
 	public Jugadores(Jugadores jugador) {
@@ -40,7 +38,6 @@ public class Jugadores {
 		this.puntos=jugador.getPuntos();
 		this.saca=jugador.getSaca();
 		this.SetsGanados=jugador.getSetsGanados();
-		this.score=jugador.getScore();
 		this.puntoTeabreak=jugador.getPuntoTeabreak();
 	}
 	public Jugadores(String nombre) {
@@ -50,7 +47,6 @@ public class Jugadores {
 		SetsGanados=0;
 		gamesGanados=0;
 		saca=false;
-		score=0;
 		puntoTeabreak=0;
 	}
 	
@@ -63,16 +59,6 @@ public class Jugadores {
 	public void sumarPuntoTeabreak() {
 		puntoTeabreak+=1;
 	}
-
-	
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
 
 	public void setSaca(boolean saca) {
 		this.saca = saca;

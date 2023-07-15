@@ -99,13 +99,16 @@ public class MenuDePlay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 //
-    private void jugarActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
-    	CreacionPersonaje cp = new CreacionPersonaje();
-    	cp.setVisible(true);
-    	cp.setLocationRelativeTo(null);
-    	this.setVisible(false);
-    	System.out.println("Iniciar");
+    private void jugarActionPerformed(java.awt.event.ActionEvent evt) {
+
+            // TODO add your handling code here:
+            CreacionPersonaje cp = new CreacionPersonaje();
+            cp.setVisible(true);
+            cp.setLocationRelativeTo(null);
+            this.setVisible(false);
+            System.out.println("Iniciar");
+
+
     }                                     
 
 

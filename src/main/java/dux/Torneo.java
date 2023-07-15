@@ -4,7 +4,6 @@ import org.apache.commons.validator.routines.DoubleValidator;
 
 import javax.swing.*;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Torneo{
 
@@ -12,18 +11,12 @@ public class Torneo{
 	private int SetsTotales;
 	private String ganador;
 	private int setActual=0;
-	private String[] opcionesCargarJOptionPane={"3","5"};
-	private String[] opcionesRevanchaJOptionPane={"Si","No"};
+	private static String[]  opcionesCargarJOptionPane={"3","5"};
+	private static String[] opcionesRevanchaJOptionPane={"Si","No"};
 	
 
-	Scanner leer= new  Scanner(System.in);
 
 	public Torneo() {
-	}
-	
-	public Torneo(String nombreTorneo) {
-		super();
-		this.nombreTorneo = nombreTorneo;
 	}
 	
 	public Integer getSetActual() {
@@ -46,13 +39,17 @@ public class Torneo{
 		this.nombreTorneo = nombreTorneo;
 	}
 	
-	public void cargarNombreTorneo(Jugadores jugador1, Jugadores jugador2 ) {
-		do{
-		this.setNombreTorneo(JOptionPane.showInputDialog("Ingrese el nombre del torneo"));
-		if(this.getNombreTorneo().equals("")){
-			JOptionPane.showMessageDialog(null,"No ingreso ningun nombre");
+	public void cargarNombreTorneo() {
+		try {
+			do {
+				this.setNombreTorneo(JOptionPane.showInputDialog("Ingrese el nombre del torneo"));
+				if (this.getNombreTorneo().equals("")) {
+					JOptionPane.showMessageDialog(null, "No ingreso ningun nombre");
+				}
+			} while (this.getNombreTorneo().equals(""));
+		}catch (Exception e){
+			System.exit(0);
 		}
-		}while(this.getNombreTorneo().equals(""));
 	}
 	
 	public double getSetsTotales() {
@@ -64,11 +61,14 @@ public class Torneo{
 	}
 	
 	public void cargarSets() {
-		if(JOptionPane.showOptionDialog(null, "¿El mejor de cuento quiere jugar?", null, 0, JOptionPane.QUESTION_MESSAGE,null ,opcionesCargarJOptionPane,opcionesCargarJOptionPane[0])==0){
-		this.SetsTotales=3;
-		}
-		else{
-		this.SetsTotales=5;
+		try {
+			if (JOptionPane.showOptionDialog(null, "¿El mejor de cuento quiere jugar?", null, 0, JOptionPane.QUESTION_MESSAGE, null, opcionesCargarJOptionPane, opcionesCargarJOptionPane[0]) == 0) {
+				this.SetsTotales = 3;
+			} else {
+				this.SetsTotales = 5;
+			}
+		}catch (Exception e){
+			System.exit(0);
 		}
 	}
 	
@@ -85,12 +85,15 @@ public class Torneo{
 			try{
 				numero=Double.parseDouble(JOptionPane.showInputDialog("Cual es la probabilidad de ganar de "+jugador1.getNombre()));
 				bandera=validator.isInRange(numero, 1, 100);
-				if(bandera==false)
+				if(!bandera)
 				JOptionPane.showMessageDialog(null, "Ingrese un numero del 1 al 100");
 			}
 			catch(NumberFormatException e){
 				JOptionPane.showMessageDialog(null, "Solo se permiten numeros");
 				bandera=false;
+			}
+			catch (Exception e){
+				System.exit(0);
 			}
 		}while(!bandera);
 		jugador1.setProbabilidadDeGanar(numero);
@@ -102,28 +105,28 @@ public class Torneo{
 	
 
 	public void mostrarResultadoPunto(Jugadores jugador1, Jugadores jugador2) {
-		if(jugador1.getPuntos()<70) {
+		if(jugador1.getPuntos()<70 && jugador2.getPuntos()<70) {
 			
-			if(jugador1.getPuntos()==55) {
-				if(jugador1.getSaca()==true) {	
+			if(jugador1.getPuntos()==55 && jugador2.getPuntos()==40) {
+				if(jugador1.getSaca()) {
 				System.out.print("*");
 				}
 				System.out.println(jugador1.getNombre()+": "+"AD"+ " /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
 
-				if(jugador2.getSaca()==true) {
+				if(jugador2.getSaca()) {
 					System.out.print("*");
 				}
 				System.out.println(jugador2.getNombre()+": "+jugador2.getPuntos()+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
 				System.out.println();
 			}
 			else {
-				if(jugador2.getPuntos()==55) {
+				if(jugador2.getPuntos()==55&&jugador1.getPuntos()==40) {
 					
-					if(jugador1.getSaca()==true) {
+					if(jugador1.getSaca()) {
 						System.out.print("*");
 					}
 					System.out.println(jugador1.getNombre()+": "+jugador1.getPuntos()+" /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
-					if(jugador2.getSaca()==true) {
+					if(jugador2.getSaca()) {
 						System.out.print("*");
 					}
 					System.out.println(jugador2.getNombre()+": AD"+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
@@ -132,16 +135,18 @@ public class Torneo{
 				}
 				else {
 					
-				
-				if(jugador1.getSaca()==true) {
+				if(jugador1.getPuntos()!=55 &&jugador2.getPuntos()!=55) {
+					if (jugador1.getSaca()) {
 						System.out.print("*");
-				}	
-				System.out.println(jugador1.getNombre()+": "+jugador1.getPuntos()+" /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
-				if(jugador2.getSaca()==true) {
-					System.out.print("*");
+					}
+					System.out.println(jugador1.getNombre() + ": " + jugador1.getPuntos() + " /// Games: " + jugador1.getGamesGanados() + " /// Sets:" + jugador1.getSetsGanados());
+
+
+					if (jugador2.getSaca()) {
+						System.out.print("*");
+					}
+					System.out.println(jugador2.getNombre() + ": " + jugador2.getPuntos() + " /// Games: " + jugador2.getGamesGanados() + " /// Sets:" + jugador2.getSetsGanados());
 				}
-				System.out.println(jugador2.getNombre()+": "+jugador2.getPuntos()+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
-				
 				System.out.println();
 				}
 			}
@@ -149,41 +154,47 @@ public class Torneo{
 		}
 		
 		
-		if(jugador2.getPuntos()<70) {
+		if(jugador2.getPuntos()<70 && jugador1.getPuntos()<70) {
 			
-			if(jugador2.getPuntos()==55) {
-				if(jugador1.getSaca()==true) {
+			if(jugador2.getPuntos()==55 && jugador1.getPuntos()==40) {
+				if(jugador1.getSaca()) {
 					System.out.print("*");
 				}
 				System.out.println(jugador1.getNombre()+": "+jugador1.getPuntos()+" /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
-				if(jugador2.getSaca()==true) {
+				if(jugador2.getSaca()) {
 					System.out.print("*");
 				}
 				System.out.println(jugador2.getNombre()+": "+"AD"+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
 				System.out.println();
 				}
 			else {
-				if(jugador1.getPuntos()==55) {
-					if(jugador1.getSaca()==true) {
+				if(jugador1.getPuntos()==55 && jugador2.getPuntos()==40) {
+					if(jugador1.getSaca()) {
 						System.out.print("*");
 					}
 					System.out.println(jugador1.getNombre()+": AD"+" /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
 					
-					if(jugador2.getSaca()==true) {
+					if(jugador2.getSaca()) {
 						System.out.print("*");
-					}System.out.println(jugador2.getNombre()+": "+jugador2.getPuntos()+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
+					}
+					System.out.println(jugador2.getNombre()+": "+jugador2.getPuntos()+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
 					System.out.println();
 				}
 				else {
-					if(jugador1.getSaca()==true) {
-						System.out.print("*");
-					}	
-				System.out.println(jugador1.getNombre()+": "+jugador1.getPuntos()+" /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
-				if(jugador2.getSaca()==true) {
-					System.out.print("*");
-				}
-				System.out.println(jugador2.getNombre()+": "+jugador2.getPuntos()+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
-				System.out.println();
+					if (jugador1.getPuntos() != 55 && jugador2.getPuntos()!=55) {
+						if (jugador1.getSaca()) {
+							System.out.print("*");
+						}
+						System.out.println(jugador1.getNombre() + ": " + jugador1.getPuntos() + " /// Games: " + jugador1.getGamesGanados() + " /// Sets:" + jugador1.getSetsGanados());
+
+
+						if (jugador2.getSaca()) {
+							System.out.print("*");
+						}
+
+						System.out.println(jugador2.getNombre() + ": " + jugador2.getPuntos() + " /// Games: " + jugador2.getGamesGanados() + " /// Sets:" + jugador2.getSetsGanados());
+						System.out.println();
+					}
 				}
 			}
 		
@@ -305,11 +316,15 @@ public class Torneo{
 	}
 	
 	public boolean preguntarRevancha(boolean revancha) {
-		if(JOptionPane.showOptionDialog(null, "¿Quieren jugar la revancha?", null, 0, JOptionPane.QUESTION_MESSAGE,null ,opcionesRevanchaJOptionPane,opcionesRevanchaJOptionPane[0])==0){
-		return true;
-		}
-		else{
-		return false;
+		try {
+			if (JOptionPane.showOptionDialog(null, "¿Quieren jugar la revancha?", null, 0, JOptionPane.QUESTION_MESSAGE, null, opcionesRevanchaJOptionPane, opcionesRevanchaJOptionPane[0]) == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}catch (Exception e){
+			System.exit(0);
+			return false;
 		}
 		
 	}
@@ -327,11 +342,11 @@ public class Torneo{
 	}
 	
 	public void mostrarPuntosTaebreak(Jugadores jugador1, Jugadores jugador2) {
-		if(jugador1.getSaca()==true) {
+		if(jugador1.getSaca()) {
 			System.out.print("*");
 		}
 		System.out.println(jugador1.getNombre()+": "+jugador1.getPuntoTeabreak());
-		if(jugador2.getSaca()==true) {
+		if(jugador2.getSaca()) {
 			System.out.print("*");
 		}
 		System.out.println(jugador2.getNombre()+": "+jugador2.getPuntoTeabreak());
@@ -424,26 +439,36 @@ public class Torneo{
 	}
 	
 
-	public void sumarScoreGanador(Jugadores jugador1,Jugadores jugador2) {
-		Jugadores jugadoraux=new Jugadores(this.getGanador(jugador1, jugador2));
-	}
+
 	public void mostrarGanador(Jugadores jugador) {
-		JOptionPane.showMessageDialog(null, "GANO EL TORNEO '"+this.getNombreTorneo().toUpperCase()+"' EL JUGADOR "+jugador.getNombre());
+		try {
+			JOptionPane.showMessageDialog(null, "GANO EL TORNEO '" + this.getNombreTorneo().toUpperCase() + "' EL JUGADOR " + jugador.getNombre());
+		}catch (Exception e){
+			System.exit(0);
+		}
 	}
 	public void jugarConRevancha(boolean revancha,Jugadores jugador1, Jugadores jugador2) {
 	
-		while(revancha==true) {
+		while(revancha) {
 			
 			this.elegirSaque(jugador1, jugador2);
-			this.cargarNombreTorneo(jugador1, jugador2);
+			this.cargarNombreTorneo();
 			this.cargarSets();
 			this.cargarPorbabilidadDeGanar(jugador1, jugador2);
 			this.jugarPartido(jugador1, jugador2);
 			this.mostrarTablero(jugador1, jugador2);
 			this.mostrarGanador(this.getGanador(jugador1, jugador2));
-			this.sumarScoreGanador(jugador1, jugador2);
 			revancha=this.preguntarRevancha(revancha);
-			
+
+			if(revancha) {
+				System.out.println("------------------------------");
+				System.out.println("------------------------------");
+				System.out.println("------------------------------");
+				System.out.println("     EMPEZANDO NUEVO PARTIDO");
+				System.out.println("------------------------------");
+				System.out.println("------------------------------");
+				System.out.println("------------------------------");
+			}
 			
 
 		       
