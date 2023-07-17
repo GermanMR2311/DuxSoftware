@@ -114,10 +114,16 @@ public class Torneo{
 				if (jugador1.getSaca()) {
 					System.out.print("*");
 				}
+				else {
+					System.out.print(" ");
+				}
 				//System.out.println(jugador1.getNombre()+": "+"AD"+ " /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
 				System.out.println(jugador1.getNombre()+"|"+jugador1.getSetsGanados()+"|"+jugador1.getGamesGanados()+"|"+jugador1.getPuntos());
 				if(jugador2.getSaca()) {
 					System.out.print("*");
+				}
+				else{
+					System.out.print(" ");
 				}
 				//System.out.println(jugador2.getNombre()+": "+jugador2.getPuntos()+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
 				System.out.println(jugador2.getNombre()+"|"+jugador2.getSetsGanados()+"|"+jugador2.getGamesGanados()+"|"+jugador2.getPuntos());
@@ -129,10 +135,16 @@ public class Torneo{
 					if(jugador1.getSaca()) {
 						System.out.print("*");
 					}
+					else{
+						System.out.print(" ");
+					}
 					//System.out.println(jugador1.getNombre()+": "+jugador1.getPuntos()+" /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
 					System.out.println(jugador1.getNombre()+"|"+jugador1.getSetsGanados()+"|"+jugador1.getGamesGanados()+"|"+jugador1.getPuntos());
 					if(jugador2.getSaca()) {
 						System.out.print("*");
+					}
+					else{
+						System.out.print(" ");
 					}
 					//System.out.println(jugador2.getNombre()+": AD"+" /// Games: " + jugador2.getGamesGanados()+" /// Sets:" + jugador2.getSetsGanados());
 					System.out.println(jugador2.getNombre()+"|"+jugador2.getSetsGanados()+"|"+jugador2.getGamesGanados()+"|AD");
@@ -162,7 +174,6 @@ public class Torneo{
 					System.out.println();
 
 				}
-				System.out.println();
 				}
 			}
 				return;
@@ -220,8 +231,6 @@ public class Torneo{
 						}
 						//System.out.println(jugador1.getNombre() + ": " + jugador1.getPuntos() + " /// Games: " + jugador1.getGamesGanados() + " /// Sets:" + jugador1.getSetsGanados());
 						System.out.println(jugador1.getNombre()+"|"+jugador1.getSetsGanados()+"|"+jugador1.getGamesGanados()+"|"+jugador1.getPuntos());
-
-
 						if (jugador2.getSaca()) {
 							System.out.print("*");
 						}
@@ -383,9 +392,15 @@ public class Torneo{
 		if(jugador1.getSaca()) {
 			System.out.print("*");
 		}
+		else{
+			System.out.println(" ");
+		}
 		System.out.println(jugador1.getNombre()+": "+jugador1.getPuntoTeabreak());
 		if(jugador2.getSaca()) {
 			System.out.print("*");
+		}
+		else{
+			System.out.println(" ");
 		}
 		System.out.println(jugador2.getNombre()+": "+jugador2.getPuntoTeabreak());
 	}

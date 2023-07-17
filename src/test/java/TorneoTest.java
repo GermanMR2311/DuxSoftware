@@ -30,13 +30,19 @@ public class TorneoTest {
     @Test
     public void cargarPorbabilidadDeGanar(){
         Torneo torneo= new Torneo();
-        Jugadores jugador1=new Jugadores();
-        jugador1.setNombre("Pablo");
-        Jugadores jugador2=new Jugadores();
-        jugador2.setNombre("Pedro");
+        Jugadores jugador1=new Jugadores("Pablo");
+        Jugadores jugador2=new Jugadores("Pedro");
         torneo.cargarPorbabilidadDeGanar(jugador1,jugador2);
         Assertions.assertTrue(validator.isInRange(jugador1.getProbabilidadDeGanar(),1,100)&&validator.isInRange(jugador2.getProbabilidadDeGanar(),1,100));
         Assertions.assertTrue(jugador2.getProbabilidadDeGanar()==100-jugador1.getProbabilidadDeGanar());
+    }
+    @Test
+    public void igualarLargoNombreTest(){
+        Torneo torneo=new Torneo();
+        Jugadores jugador1=new Jugadores("Ger");
+        Jugadores jugador2=new Jugadores("Matias");
+        torneo.igualarLargoNombre(jugador1,jugador2);
+        Assertions.assertTrue(jugador1.getNombre().length()==jugador2.getNombre().length());
     }
 
 
