@@ -145,6 +145,8 @@ public class Jugadores {
 		this.puntosSets.clear();
 		this.gamesGanados=0;
 		this.SetsGanados=0;
+		this.puntosTeabreak.clear();
+		this.puntoTeabreak=0;
 	}
 	
 }

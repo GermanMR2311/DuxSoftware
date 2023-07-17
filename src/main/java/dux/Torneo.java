@@ -460,7 +460,7 @@ public class Torneo{
 		for(int i=0;i<this.getSetActual();i++) {
 			resultado1=resultado1+jugador1.getPuntosSets().get(i);
 			resultado2=resultado2+jugador2.getPuntosSets().get(i);
-			if(jugador1.getPuntosTeabreak().get(i)!=null && jugador1.getPuntosTeabreak().get(i)<jugador2.getPuntosTeabreak().get(i)) {
+			if(jugador1.getPuntosTeabreak().get(i)!=0 || jugador2.getPuntoTeabreak()!=0) {
 				resultado1=resultado1+"-"+jugador1.getPuntosTeabreak().get(i);
 				resultado2=resultado2+"-"+jugador2.getPuntosTeabreak().get(i);
 			}
