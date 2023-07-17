@@ -394,14 +394,14 @@ public class Torneo{
 			System.out.print("*");
 		}
 		else{
-			System.out.println(" ");
+			System.out.print(" ");
 		}
 		System.out.println(jugador1.getNombre()+": "+jugador1.getPuntoTeabreak());
 		if(jugador2.getSaca()) {
 			System.out.print("*");
 		}
 		else{
-			System.out.println(" ");
+			System.out.print(" ");
 		}
 		System.out.println(jugador2.getNombre()+": "+jugador2.getPuntoTeabreak());
 	}
