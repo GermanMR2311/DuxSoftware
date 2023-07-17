@@ -404,6 +404,7 @@ public class Torneo{
 			System.out.print(" ");
 		}
 		System.out.println(jugador2.getNombre()+": "+jugador2.getPuntoTeabreak());
+		System.out.println("");
 	}
 	
 	public void jugarPuntoTaebreak(Jugadores jugador1, Jugadores jugador2) {
