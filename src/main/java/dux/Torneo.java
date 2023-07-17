@@ -118,7 +118,7 @@ public class Torneo{
 					System.out.print(" ");
 				}
 				//System.out.println(jugador1.getNombre()+": "+"AD"+ " /// Games: " + jugador1.getGamesGanados()+" /// Sets:" + jugador1.getSetsGanados());
-				System.out.println(jugador1.getNombre()+"|"+jugador1.getSetsGanados()+"|"+jugador1.getGamesGanados()+"|"+jugador1.getPuntos());
+				System.out.println(jugador1.getNombre()+"|"+jugador1.getSetsGanados()+"|"+jugador1.getGamesGanados()+"|AD");
 				if(jugador2.getSaca()) {
 					System.out.print("*");
 				}
