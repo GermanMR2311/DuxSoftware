@@ -222,7 +222,9 @@ public class CreacionPersonaje extends JFrame {
         	
 
     	}
-    }                                      
+    }
+
+
 
     /**
      * @param args the command line arguments

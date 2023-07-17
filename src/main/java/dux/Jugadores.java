@@ -140,5 +140,11 @@ public class Jugadores {
 		puntos-=15;
 		}
 	}
+	public void reiniciarPersonaje(){
+		this.puntos=0;
+		this.puntosSets.clear();
+		this.gamesGanados=0;
+		this.SetsGanados=0;
+	}
 	
 }
