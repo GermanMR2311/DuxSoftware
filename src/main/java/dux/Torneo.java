@@ -8,7 +8,7 @@ import java.util.Random;
 public class Torneo{
 
 	private String nombreTorneo;
-	private int SetsTotales;
+	private Integer SetsTotales;
 	private String ganador;
 	private int setActual=0;
 	private static String[]  opcionesCargarJOptionPane={"3","5"};
@@ -29,6 +29,9 @@ public class Torneo{
 	
 	public void sumaSetActual() {
 		this.setActual+=1;
+	}
+	public String[] getopcionesCargarJOptionPane(){
+		return opcionesCargarJOptionPane;
 	}
 
 	public String getNombreTorneo() {
@@ -52,11 +55,11 @@ public class Torneo{
 		}
 	}
 	
-	public double getSetsTotales() {
+	public Integer getSetsTotales() {
 		return SetsTotales;
 	}
 	
-	public void setSetsTotales(int setsTotales){
+	public void setSetsTotales(Integer setsTotales){
 		this.SetsTotales = setsTotales;
 	}
 	
