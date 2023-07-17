@@ -18,7 +18,8 @@ public class Torneo{
 
 	public Torneo() {
 	}
-	
+
+	public String[] getOpcionesRevanchaJOptionPane(){return opcionesRevanchaJOptionPane;}
 	public Integer getSetActual() {
 		return setActual;
 	}
@@ -80,7 +81,7 @@ public class Torneo{
 		return ganador;
 	}
 
-	public void cargarPorbabilidadDeGanar(Jugadores jugador1, Jugadores jugador2) {
+	public void cargarProbabilidadDeGanar(Jugadores jugador1, Jugadores jugador2) {
 		DoubleValidator validator= new DoubleValidator();
 		double numero=0;
 		boolean bandera=false;
@@ -489,7 +490,7 @@ public class Torneo{
 			this.elegirSaque(jugador1, jugador2);
 			this.cargarNombreTorneo();
 			this.cargarSets();
-			this.cargarPorbabilidadDeGanar(jugador1, jugador2);
+			this.cargarProbabilidadDeGanar(jugador1, jugador2);
 			this.jugarPartido(jugador1, jugador2);
 			this.mostrarTablero(jugador1, jugador2);
 			this.mostrarGanador(this.getGanadorTorneo(jugador1, jugador2));
